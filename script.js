@@ -4,8 +4,6 @@ const crafts = [
   { craft: 'All', name: 'All' },
 ];
 
-const peopleInSpace = document.querySelector('[data-js="people-in-space"]');
-
 function craftButton(craft, name) {
   const button = document.createElement('button');
   button.textContent = name;
@@ -21,9 +19,11 @@ crafts.forEach(({ craft, name }) => {
   document.body.append(button);
 });
 
+const peopleInSpace = document.querySelector('[data-js="people-in-space"]');
+
 async function renderAstronauts(craft) {
-  const peoplePerCraft = await fetchPeopleInSpace(craft);
-  const numberOfPeoplePerCraft = peoplePerCraft.length;
+  const peoplePerSpaceCraft = await fetchPeopleInSpace(craft);
+  const numberOfPeoplePerCraft = peoplePerSpaceCraft.length;
   if (numberOfPeoplePerCraft === 0) {
     peopleInSpace.textContent = `There are no people on ${craft} right now`;
   } else {
@@ -42,7 +42,7 @@ async function renderAstronauts(craft) {
   existingList?.remove();
 
   const listOfAstronauts = document.createElement('ul');
-  peoplePerCraft.forEach((person) => {
+  peoplePerSpaceCraft.forEach((person) => {
     const nameofAstronaut = document.createElement('li');
     nameofAstronaut.textContent = person.name;
     listOfAstronauts.appendChild(nameofAstronaut);
