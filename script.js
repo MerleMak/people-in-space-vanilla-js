@@ -1,4 +1,4 @@
-const crafts = [
+const spaceCrafts = [
   { craft: 'ISS', name: 'ISS' },
   { craft: 'Tiangong', name: 'Tiangong' },
   { craft: 'All', name: 'All' },
@@ -14,7 +14,7 @@ function craftButton(craft, name) {
   return button;
 }
 
-crafts.forEach(({ craft, name }) => {
+spaceCrafts.forEach(({ craft, name }) => {
   const button = craftButton(craft, name);
   document.body.append(button);
 });
